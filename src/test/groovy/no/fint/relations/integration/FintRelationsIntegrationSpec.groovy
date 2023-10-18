@@ -7,13 +7,12 @@ import no.fint.relations.integration.testutils.dto.Person
 import no.fint.relations.integration.testutils.dto.PersonResource
 import no.fint.relations.integration.testutils.dto.PersonResources
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.context.embedded.LocalServerPort
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.web.client.TestRestTemplate
 import org.springframework.boot.test.web.server.LocalServerPort
 import org.springframework.core.ParameterizedTypeReference
-import org.springframework.hateoas.Resource
-import org.springframework.hateoas.Resources
+import org.springframework.hateoas.EntityModel
+import org.springframework.hateoas.CollectionModel
 import org.springframework.http.HttpMethod
 import org.springframework.http.HttpStatus
 import org.springframework.test.context.ActiveProfiles
@@ -58,10 +57,10 @@ class FintRelationsIntegrationSpec extends Specification {
 
     def "Get spring hateoas resource"() {
         when:
-        def singleResource = restTemplate.exchange('/person/resource/without-link-mapper', HttpMethod.GET, null, new ParameterizedTypeReference<Resource<Person>>() {
+        def singleResource = restTemplate.exchange('/person/resource/without-link-mapper', HttpMethod.GET, null, new ParameterizedTypeReference<EntityModel<Person>>() {
         })
         def singleResourceBody = singleResource.getBody()
-        def collectionResources = restTemplate.exchange('/person/resources/without-link-mapper', HttpMethod.GET, null, new ParameterizedTypeReference<Resources<Person>>() {
+        def collectionResources = restTemplate.exchange('/person/resources/without-link-mapper', HttpMethod.GET, null, new ParameterizedTypeReference<CollectionModel<Person>>() {
         })
         def collectionResourcesBody = collectionResources.getBody()
 

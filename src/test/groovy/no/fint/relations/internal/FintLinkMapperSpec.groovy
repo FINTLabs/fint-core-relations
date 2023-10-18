@@ -31,7 +31,7 @@ class FintLinkMapperSpec extends Specification {
         def link = fintLinkMapper.getLink('${no.fint.TestDto}/test')
 
         then:
-        1 * props.getTestRelationBase() >> 'https://api.felleskomponent.no'
+        1 * props.getRelationBase() >> 'https://api.felleskomponent.no'
         link == 'https://api.felleskomponent.no/test'
     }
 
@@ -47,7 +47,7 @@ class FintLinkMapperSpec extends Specification {
         def link = fintLinkMapper.getLink('${testdto}/test')
 
         then:
-        1 * tempProps.getTestRelationBase() >> 'http://local'
+        1 * tempProps.getRelationBase() >> 'http://local'
         link == 'http://local/test'
     }
 
@@ -60,7 +60,7 @@ class FintLinkMapperSpec extends Specification {
         def link = fintLinkMapper.getLink('${testdto}/id')
 
         then:
-        1 * props.getTestRelationBase() >> 'https://api.felleskomponent.no'
+        1 * props.getRelationBase() >> 'https://api.felleskomponent.no'
         link == 'https://api.felleskomponent.no/id'
     }
 
@@ -73,7 +73,7 @@ class FintLinkMapperSpec extends Specification {
         def link = fintLinkMapper.getLink('${}/id')
 
         then:
-        1 * props.getTestRelationBase() >> 'https://api.felleskomponent.no'
+        1 * props.getRelationBase() >> 'https://api.felleskomponent.no'
         link == 'https://api.felleskomponent.no/id'
 
     }
@@ -108,6 +108,6 @@ class FintLinkMapperSpec extends Specification {
 
         then:
         relativeLink == 'http://localhost:8080/some/relative/path'
-        1 * props.getTestRelationBase() >> 'http://localhost:8080'
+        1 * props.getRelationBase() >> 'http://localhost:8080'
     }
 }

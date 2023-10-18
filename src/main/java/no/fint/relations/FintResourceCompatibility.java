@@ -3,12 +3,12 @@ package no.fint.relations;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import jakarta.annotation.PostConstruct;
 import no.fint.model.relation.FintResource;
 import no.fint.model.resource.FintLinks;
 import no.fint.model.resource.Link;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.PostConstruct;
 import java.util.List;
 import java.util.stream.Collectors;
 

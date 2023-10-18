@@ -1,9 +1,8 @@
 package no.fint.relations.config;
 
+import jakarta.annotation.PostConstruct;
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Value;
-
-import javax.annotation.PostConstruct;
 
 public class FintRelationsProps {
 
@@ -20,9 +19,6 @@ public class FintRelationsProps {
     @Value("${fint.relations.default-base-url:https://api.felleskomponent.no}")
     private String relationBase;
 
-    @Value("${fint.relations.test-base-url:http://localhost}")
-    private String testRelationBase;
-
     @Getter
     @Value("${fint.relations.force-https:true}")
     private String forceHttps;
@@ -33,14 +29,6 @@ public class FintRelationsProps {
             port = localServerPort;
         } else if (serverPort > 0) {
             port = serverPort;
-        }
-    }
-
-    public String getTestRelationBase() {
-        if (testRelationBase.replace("://", "").contains(":")) {
-            return testRelationBase;
-        } else {
-            return String.format("%s:%d", testRelationBase, port);
         }
     }
 }

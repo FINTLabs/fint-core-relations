@@ -1,5 +1,6 @@
 package no.fint.relations.internal;
 
+import jakarta.annotation.PostConstruct;
 import no.fint.model.relation.Relation;
 import no.fint.relations.config.FintRelationsProps;
 import org.apache.commons.text.StringSubstitutor;
@@ -7,9 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
+import org.springframework.core.env.Profiles;
 import org.springframework.hateoas.Link;
 
-import javax.annotation.PostConstruct;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -47,7 +48,7 @@ public class FintLinkMapper {
     public String getLink(String link) {
         String defaultLink = getConfiguredLink();
         if (link.startsWith("${") && link.contains("}")) {
-            link = link.replace("}", String.format(":-%s}", defaultLink));
+            link = link.replace("}", ":-%s}".formatted(defaultLink));
             link = strSubstitutor.replace(link);
         }
         if (link.startsWith("/")) {
@@ -58,12 +59,12 @@ public class FintLinkMapper {
     }
 
     private String getConfiguredLink() {
-        return environment.acceptsProfiles("test") ? props.getTestRelationBase() : props.getRelationBase();
+        return props.getRelationBase();
     }
 
     public Link populateProtocol(Link link) {
         String href = populateProtocol(link.getHref());
-        return new Link(href, link.getRel());
+        return Link.of(href, link.getRel());
     }
 
     public String populateProtocol(String href) {

@@ -4,20 +4,20 @@ import spock.lang.Specification
 
 class FintRelationsPropsSpec extends Specification {
 
-    def "Get local server port when running with test profile"() {
+    def "Get local server port"() {
         when:
-        def props = new FintRelationsProps(testRelationBase: 'http://localhost', port: 1234)
+        def props = new FintRelationsProps(relationBase: 'http://localhost')
 
         then:
-        props.testRelationBase == 'http://localhost:1234'
+        props.relationBase == 'http://localhost'
     }
 
-    def "Get local server address when running with test profile"() {
+    def "Get local server address"() {
         when:
-        def props = new FintRelationsProps(testRelationBase: 'http://localhost:8080')
+        def props = new FintRelationsProps(relationBase: 'http://localhost:8080')
 
         then:
-        props.testRelationBase == 'http://localhost:8080'
+        props.relationBase == 'http://localhost:8080'
     }
 
     def "Use local server port when configured"() {
