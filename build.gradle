@@ -9,7 +9,7 @@ plugins {
 }
 
 group = 'no.fintlabs'
-version = '0.0.1-SNAPSHOT'
+version = project.hasProperty('releaseVersion') ? project.getProperty('releaseVersion') : '0-SNAPSHOT'
 sourceCompatibility = 17
 
 repositories {
