@@ -34,4 +34,6 @@ public class PersonResource implements FintLinks {
         result.add(address);
         return result;
     }
+
+
 }
