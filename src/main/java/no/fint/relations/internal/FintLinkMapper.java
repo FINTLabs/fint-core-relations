@@ -46,6 +46,9 @@ public class FintLinkMapper {
     }
 
     public String getLink(String link) {
+        if (link == null) {
+            return null;
+        }
         String defaultLink = getConfiguredLink();
         if (link.startsWith("${") && link.contains("}")) {
             link = link.replace("}", ":-%s}".formatted(defaultLink));
