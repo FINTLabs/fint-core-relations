@@ -1,6 +1,6 @@
 package no.fint.relations.integration.testutils.controller;
 
-import no.fint.model.resource.Link;
+import no.novari.fint.model.resource.Link;
 import no.fint.relations.FintLinker;
 import no.fint.relations.integration.testutils.dto.PersonResource;
 import no.fint.relations.integration.testutils.dto.PersonResources;

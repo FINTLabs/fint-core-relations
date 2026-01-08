@@ -5,8 +5,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import jakarta.annotation.PostConstruct;
 import no.fint.model.relation.FintResource;
-import no.fint.model.resource.FintLinks;
-import no.fint.model.resource.Link;
+import no.novari.fint.model.resource.FintLinks;
+import no.novari.fint.model.resource.Link;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -32,7 +32,7 @@ public class FintResourceCompatibility {
     }
 
     public <T extends FintLinks> List<T> convertResourceData(List<?> data, Class<T> cls) {
-        JavaType sourceType = objectMapper.getTypeFactory().constructFromCanonical("java.util.List<no.fint.model.relation.FintResource<" + cls.getName() + ">>");
+        JavaType sourceType = objectMapper.getTypeFactory().constructFromCanonical("java.util.List<no.novari.fint.model.relation.FintResource<" + cls.getName() + ">>");
         List<FintResource<T>> original = objectMapper.convertValue(data, sourceType);
         return original.stream().map(fintResource -> {
             T resource = fintResource.getResource();

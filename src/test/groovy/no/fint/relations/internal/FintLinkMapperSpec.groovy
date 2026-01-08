@@ -5,7 +5,7 @@ import org.springframework.core.env.Environment
 import spock.lang.Specification
 
 class FintLinkMapperSpec extends Specification {
-    private no.fint.relations.internal.FintLinkMapper fintLinkMapper
+    private FintLinkMapper fintLinkMapper
     private FintRelationsProps props
     private Environment environment
 
@@ -80,7 +80,7 @@ class FintLinkMapperSpec extends Specification {
 
     def "Create links from simple and full class name"() {
         given:
-        def fullClassName = 'no.fint.model.testutils.Person'
+        def fullClassName = 'no.novari.fint.model.testutils.Person'
         def simpleClassName = 'testutils.person'
         def links = [:]
         links[fullClassName] = 'http://localhost:8080'

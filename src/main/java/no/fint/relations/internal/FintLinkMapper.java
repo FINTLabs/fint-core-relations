@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
-import org.springframework.core.env.Profiles;
 import org.springframework.hateoas.Link;
 
 import java.util.HashMap;
@@ -79,7 +78,7 @@ public class FintLinkMapper {
     }
 
     public static String getName(Class<?> clazz) {
-        return no.fint.model.resource.Link.getHrefPlaceholder(clazz);
+        return no.novari.fint.model.resource.Link.getHrefPlaceholder(clazz);
     }
 
 }

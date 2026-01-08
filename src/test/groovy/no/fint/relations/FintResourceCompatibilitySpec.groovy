@@ -2,7 +2,7 @@ package no.fint.relations
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import no.fint.model.relation.FintResource
-import no.fint.model.resource.Link
+import no.novari.fint.model.resource.Link
 import no.fint.relations.integration.testutils.dto.PersonResource
 import spock.lang.Specification
 
